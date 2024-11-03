@@ -1,0 +1,12 @@
+#scratch .box_text,
+#html .box_text,
+#css .b {
+  margin-left: 20px;
+}
+
+/* Estilos migrados do scratch.css */
+.box_text {
+  justify-content: flex-start;
+  margin-left: 250px; /* Ajuste este valor se necessário */
+  width: 1000px; /* Ajuste este valor se necessário */
+}

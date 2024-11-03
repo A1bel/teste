@@ -1,0 +1,80 @@
+/* Banner */
+.banner-container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  /* background-color: #111111; */
+  background-color: #21213c;
+  color: white;
+}
+
+.banner {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  margin-top: 0;
+  /* background-color: black;
+  padding: 5px;
+  border-radius: 5px; */
+  display: flex;
+}
+
+.banner h1 {
+  font-size: 35px;
+}
+.banner p {
+  font-size: 20px;
+}
+/* Courses */
+
+.courses h1 {
+  /* text-align: center; */
+  margin-bottom: 20px;
+}
+
+.courses-imgs {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.courses-imgs a {
+  display: block;
+  height: 230px;
+  width: 25%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.html {
+  background-image: url("/static/images/html.png");
+}
+
+.scratch {
+  background-image: url("/static/images/scratch.jpg");
+}
+
+.css {
+  background-image: url("/static/images/css.png");
+}
+
+/* First Section */
+/* 
+.s1 h1 {
+  text-align: center;
+} */
+
+/* Second Section */
+/* 
+.s2 h1 {
+  text-align: center;
+} */
+
+/* Video */
+
+.youtubeBox {
+  display: flex;
+  justify-content: center;
+}
