@@ -1,0 +1,4 @@
+{
+  "public": "templates",
+  "rewrites": [{ "source": "/", "destination": "/index.html" }]
+}
