@@ -17,9 +17,9 @@
       <a class="nav-item" href="index.html">
         <h1>Byte Club</h1>
       </a>
-      <a class="nav-item" href="web.html">HTML</a>
-      <a class="nav-item" href="css.html">CSS</a>
-      <a class="nav-item" href="scratch.html">Scratch</a>
+      <a class="nav-item" href="./templates/web.html">HTML</a>
+      <a class="nav-item" href="./templates/css.html">CSS</a>
+      <a class="nav-item" href="./templates/scratch.html">Scratch</a>
     </nav>
     <div class="header-search">
       <input type="text" id="inptPesquisa" placeholder="Pesquisar..." />
@@ -80,57 +80,57 @@
   </form>
 
   <script>
-    document.getElementById("bot-form").addEventListener("submit", async function(event) {
-    console.log("Evento de Submit:", event);
-    event.preventDefault();
-    event.stopPropagation();
+    document.getElementById("bot-form").addEventListener("submit", async function (event) {
+      console.log("Evento de Submit:", event);
+      event.preventDefault();
+      event.stopPropagation();
 
-    const promptInput = document.getElementById("prompt-input");
-    const chatMessages = document.getElementById("chat-messages");
+      const promptInput = document.getElementById("prompt-input");
+      const chatMessages = document.getElementById("chat-messages");
 
-    // Verifica se os elementos existem antes de tentar acessá-los
-    if (!promptInput || !chatMessages) {
+      // Verifica se os elementos existem antes de tentar acessá-los
+      if (!promptInput || !chatMessages) {
         console.error("Erro: Elementos HTML não encontrados.");
         return; // Sai da função se os elementos não existirem
-    }
+      }
 
-    const question = promptInput.value.trim().toLowerCase(); // trim() e toLowerCase() adicionados
-    promptInput.value = "";
+      const question = promptInput.value.trim().toLowerCase(); // trim() e toLowerCase() adicionados
+      promptInput.value = "";
 
-    chatMessages.innerHTML += `<div class="user-message"><b>Você:</b> ${question}</div>`;
+      chatMessages.innerHTML += `<div class="user-message"><b>Você:</b> ${question}</div>`;
 
-    try {
+      try {
         const formData = { prompt: question }; // Objeto JavaScript para enviar como JSON
         console.log("Enviando dados:", formData);
         console.log("Enviando dados:", JSON.stringify(formData))
         const response = await fetch("/", {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' }, // Cabeçalho JSON
-            body: JSON.stringify(formData) // Corpo da requisição em JSON
+          method: "POST",
+          headers: { 'Content-Type': 'application/json' }, // Cabeçalho JSON
+          body: JSON.stringify(formData) // Corpo da requisição em JSON
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || "Erro na requisição.");
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Erro na requisição.");
         }
 
         try { // Bloco try-catch para o JSON.parse
-            const responseJson = await response.json();
-            const respostaHTML = marked.parse(responseJson.resposta);
-            chatMessages.innerHTML += `<div class="bot-message"><b>Bot:</b> ${respostaHTML}</div>`;
+          const responseJson = await response.json();
+          const respostaHTML = marked.parse(responseJson.resposta);
+          chatMessages.innerHTML += `<div class="bot-message"><b>Bot:</b> ${respostaHTML}</div>`;
         } catch (jsonError) {
-            console.error("Erro ao analisar JSON:", jsonError);
-            chatMessages.innerHTML += `<div class="error-message">Erro: Resposta inválida do servidor (não é JSON).</div>`;
+          console.error("Erro ao analisar JSON:", jsonError);
+          chatMessages.innerHTML += `<div class="error-message">Erro: Resposta inválida do servidor (não é JSON).</div>`;
         }
 
-    } catch (error) {
+      } catch (error) {
         console.error("Erro ao processar a requisição ou a resposta:", error);
         chatMessages.innerHTML += `<div class="error-message">Erro: ${error.message}</div>`;
-    }
+      }
 
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-});
-    </script>
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
+  </script>
 
   <footer>
     <div>
