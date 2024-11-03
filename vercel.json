@@ -1,4 +1,3 @@
 {
-  "public": "templates",
-  "rewrites": [{ "source": "/", "destination": "/index.html" }]
+  "rewrites": [{ "source": "/", "destination": "/templates/index.html" }]
 }
